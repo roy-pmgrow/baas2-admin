@@ -1,5 +1,4 @@
-import React from "react";
-import Wrapper from "../../../layout/Wrapper";
+import Wrapper from "layout/Wrapper";
 
 const Table = ({ header, children }) => {
   return (

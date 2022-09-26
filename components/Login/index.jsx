@@ -1,6 +1,5 @@
-import React from "react";
+import adminApi from "apis/admin";
 import { useForm } from "react-hook-form";
-import adminApi from "../../apis/admin";
 
 const Login = () => {
   const { register, watch, handleSubmit } = useForm({

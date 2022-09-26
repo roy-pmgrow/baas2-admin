@@ -1,9 +1,8 @@
-import React from "react";
-import FilterDatePicker from "../../../../components/Filter/FilterDatePicker";
-import FilterDropdown from "../../../../components/Filter/FilterDropdown";
-import FilterInput from "../../../../components/Filter/Input";
-import Table from "../../../../components/Form/Table";
-import Wrapper from "../../../../layout/Wrapper";
+import FilterDatePicker from "components/Filter/FilterDatePicker";
+import FilterDropdown from "components/Filter/FilterDropdown";
+import FilterInput from "components/Filter/FilterInput";
+import Table from "components/Form/Table";
+import Wrapper from "layout/Wrapper";
 
 const MngUserPage = () => {
   const contents = [
