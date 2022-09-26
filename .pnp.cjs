@@ -33,6 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@next/eslint-plugin-next", "npm:12.3.1"],\
             ["autoprefixer", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:10.4.12"],\
             ["babel-eslint", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:10.1.0"],\
             ["dayjs", "npm:1.11.5"],\
@@ -48,7 +49,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:4.6.0"],\
             ["next", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:12.3.1"],\
             ["postcss", "npm:8.4.16"],\
-            ["prettier", "npm:2.7.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:18.2.0"],\
             ["react-hook-form", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:7.36.1"],\
@@ -965,6 +965,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["baas2-admin", "workspace:."],\
+            ["@next/eslint-plugin-next", "npm:12.3.1"],\
             ["autoprefixer", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:10.4.12"],\
             ["babel-eslint", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:10.1.0"],\
             ["dayjs", "npm:1.11.5"],\
@@ -980,7 +981,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:4.6.0"],\
             ["next", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:12.3.1"],\
             ["postcss", "npm:8.4.16"],\
-            ["prettier", "npm:2.7.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:18.2.0"],\
             ["react-hook-form", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:7.36.1"],\
@@ -2050,7 +2050,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prettier", null],\
             ["eslint", "npm:8.24.0"],\
             ["eslint-config-prettier", "virtual:f3e16c7bc484ed9d54e45bfd3218b5105c6a91121db6f1251a93e7e3efc8ad0a5573034c8c373ef581e621fb6630d27970ab685f66d9c636aee707b8c6f33837#npm:8.5.0"],\
-            ["prettier", "npm:2.7.1"],\
+            ["prettier", null],\
             ["prettier-linter-helpers", "npm:1.0.0"]\
           ],\
           "packagePeers": [\
@@ -3835,15 +3835,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/prelude-ls-npm-1.2.1-3e4d272a55-cd192ec0d0.zip/node_modules/prelude-ls/",\
           "packageDependencies": [\
             ["prelude-ls", "npm:1.2.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["prettier", [\
-        ["npm:2.7.1", {\
-          "packageLocation": "./.yarn/cache/prettier-npm-2.7.1-d1f40f5e1a-55a4409182.zip/node_modules/prettier/",\
-          "packageDependencies": [\
-            ["prettier", "npm:2.7.1"]\
           ],\
           "linkType": "HARD"\
         }]\

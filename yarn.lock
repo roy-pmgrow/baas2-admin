@@ -258,7 +258,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:12.3.1":
+"@next/eslint-plugin-next@npm:12.3.1, @next/eslint-plugin-next@npm:latest":
   version: 12.3.1
   resolution: "@next/eslint-plugin-next@npm:12.3.1"
   dependencies:
@@ -754,6 +754,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "baas2-admin@workspace:."
   dependencies:
+    "@next/eslint-plugin-next": latest
     autoprefixer: ^10.4.12
     babel-eslint: ^10.1.0
     dayjs: ^1.11.5
@@ -769,7 +770,6 @@ __metadata:
     eslint-plugin-react-hooks: ^4.6.0
     next: 12.3.1
     postcss: ^8.4.16
-    prettier: ^2.7.1
     react: 18.2.0
     react-dom: 18.2.0
     react-hook-form: ^7.36.1
@@ -3065,15 +3065,6 @@ __metadata:
   dependencies:
     fast-diff: ^1.1.2
   checksum: 00ce8011cf6430158d27f9c92cfea0a7699405633f7f1d4a45f07e21bf78e99895911cbcdc3853db3a824201a7c745bd49bfea8abd5fb9883e765a90f74f8392
-  languageName: node
-  linkType: hard
-
-"prettier@npm:^2.7.1":
-  version: 2.7.1
-  resolution: "prettier@npm:2.7.1"
-  bin:
-    prettier: bin-prettier.js
-  checksum: 55a4409182260866ab31284d929b3cb961e5fdb91fe0d2e099dac92eaecec890f36e524b4c19e6ceae839c99c6d7195817579cdffc8e2c80da0cb794463a748b
   languageName: node
   linkType: hard
 
