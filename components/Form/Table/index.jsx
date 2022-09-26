@@ -4,7 +4,7 @@ const Table = ({ header, children }) => {
   return (
     <Wrapper title="사용자 목록">
       <div className="w-full max-h-[38rem] overflow-y-auto">
-        <table className="w-full" border="0" cellspacing="0" cellpadding="0">
+        <table className="w-full" border="0" cellSpacing="0" cellPadding="0">
           <thead className="sticky top-0 bg-white">
             <tr>
               {header.map((title) => (

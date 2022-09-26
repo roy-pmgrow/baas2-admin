@@ -1,4 +1,3 @@
-import React from "react";
 
 const Button = ({ children, color = "bg-[#3e4b5b]", onClick }) => {
   return (
