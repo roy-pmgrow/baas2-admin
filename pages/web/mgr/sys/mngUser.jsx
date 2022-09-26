@@ -4,7 +4,6 @@ import FilterInput from "components/Filter/FilterInput";
 import Table from "components/Form/Table";
 import Wrapper from "layout/Wrapper";
 
-
 const MngUserPage = () => {
   const contents = [
     {

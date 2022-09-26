@@ -24,7 +24,7 @@ const handleResponse = async (response) => {
     const data = text && JSON.parse(text);
     const { resultCd } = data;
     if (resultCd !== "success") {
-      const error = rs_msg;
+      const error = resultCd;
       return Promise.reject(error);
     }
     return data;
@@ -62,6 +62,14 @@ class HttpRequest {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${url}`, {
       method: "delete",
       headers: { ...getHeader() },
+    });
+    return handleResponse(response);
+  }
+
+  async form(url, formData) {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${url}`, {
+      method: "post",
+      body: formData,
     });
     return handleResponse(response);
   }
