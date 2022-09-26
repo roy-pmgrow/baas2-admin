@@ -1,10 +1,11 @@
 import dayjs from "dayjs";
 
-const FilterDatePicker = ({ title }) => {
+const FilterDatePicker = ({ register, title }) => {
   return (
     <div className="flex items-center">
       <div className="w-[7rem] mr-[1rem]">{title}</div>
       <input
+        {...register}
         type="date"
         className="bg-[#f3f5fb] border bodrer-[#dbdbdb] rounded-[0.25rem] w-full leading-[2.5rem] p-[0_0.625rem] outline-none"
         defaultValue={dayjs().format("YYYY-MM-DD")}

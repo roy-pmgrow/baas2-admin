@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 const LoginPage = () => {
   const { push } = useRouter();
-  const { register, watch, handleSubmit } = useForm({
+  const { register, handleSubmit } = useForm({
     mode: "onChange",
   });
 
