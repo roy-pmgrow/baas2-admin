@@ -1,36 +1,41 @@
-import chargeApi from "apis/charge";
-import FilterDatePicker from "components/Filter/FilterDatePicker";
+import carApi from "apis/car";
 import FilterDropdown from "components/Filter/FilterDropdown";
+import FilterRangeDatePicker from "components/Filter/FilterRangeDatePicker";
 import Button from "components/Form/Button";
 import Table from "components/Form/Table";
 import Wrapper from "layout/Wrapper";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
-const MngRechargeFeePage = () => {
+const MngCarDriveHistListForm = () => {
   const initData = { aplcYmd: "2022-09-26", hlVoltageDivCd: "", choiceDivCd: "", timeslotDivCd: "" };
   const [dataSet, setDataSet] = useState([]);
   const { register, handleSubmit } = useForm({ mode: "onChange" });
 
   const onValid = (data) => {
-    getMngRechargeFeeList(data);
+    console.log(data);
   };
 
-  const getMngRechargeFeeList = async (data) => {
-    const { mngRechargeFeeList } = await chargeApi.mngRechargeFeeList(data);
-    setDataSet(mngRechargeFeeList);
+  // const getMngRechargeFeeList = async (data) => {
+  //   const { mngRechargeFeeList } = await chargeApi.mngRechargeFeeList(data);
+  //   setDataSet(mngRechargeFeeList);
+  // };
+
+  const getMngCarDriveHistCodeList = async () => {
+    const { codeList4, codeList5 } = await carApi.mngCarDriveHistCodeList();
+    console.log(codeList4, codeList5);
   };
 
   useEffect(() => {
-    getMngRechargeFeeList(initData);
+    // getMngCarDriveHistCodeList();
   }, []);
 
   return (
     <form onSubmit={handleSubmit(onValid)}>
-      <Wrapper title="충전단가 관리">
+      <Wrapper title="차량운행이력">
         <FilterDropdown
           register={register("hlVoltageDivCd")}
-          title="고저전압구분"
+          title="업체명"
           list={[
             { id: "", title: "전체" },
             { id: "1", title: "고압" },
@@ -60,10 +65,10 @@ const MngRechargeFeePage = () => {
             { id: "4", title: "전체시간" },
           ]}
         />
-        <FilterDatePicker register={register("aplcYmd")} title="조회일자" />
+        <FilterRangeDatePicker registers={[register("dataS"), register("dataE")]} title="조회일자" />
         <Button type="submit">조회</Button>
       </Wrapper>
-      <Wrapper title="분기별 세부항목   [적용일자 : 2022-04-01]">
+      <Wrapper title="운행이력">
         <Table header={["NO", "전압구분", "선택구분", "기본요금", "시간대", "여름철", "봄가을철", "겨울철"]}>
           {dataSet.map(
             (
@@ -96,4 +101,4 @@ const MngRechargeFeePage = () => {
   );
 };
 
-export default MngRechargeFeePage;
+export default MngCarDriveHistListForm;
