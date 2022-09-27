@@ -28,7 +28,7 @@ const Menus = () => {
   }, []);
 
   return (
-    <ul className="min-w-[12rem] space-y-[0.5rem] max-h-screen overflow-y-auto px-5">
+    <ul className="min-w-[12rem] space-y-[0.5rem] max-h-screen overflow-y-auto px-5 py-5">
       {menus.map(({ menuId, menuNm, menuLevel, path }) =>
         menuLevel === "1" ? (
           <div key={menuId}>
@@ -38,11 +38,11 @@ const Menus = () => {
         ) : activeMenus.includes(path) ? (
           <Link key={menuId} href={path}>
             <a>
-              <li className={`ml-[${menuLevel}rem] mt-[0.5rem] text-green-500`}>{menuNm}</li>
+              <li className={`ml-[2rem] mt-[0.5rem] text-green-500`}>{menuNm}</li>
             </a>
           </Link>
         ) : (
-          <li key={menuId} className={`ml-[${menuLevel}rem]`}>
+          <li key={menuId} className={`ml-[2rem]`}>
             {menuNm}
           </li>
         ),

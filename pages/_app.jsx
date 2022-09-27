@@ -8,7 +8,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <div className="flex w-full h-full">
       {pathname !== "/" && pathname !== "/login" && <Menus />}
-
       <Component {...pageProps} />
     </div>
   );

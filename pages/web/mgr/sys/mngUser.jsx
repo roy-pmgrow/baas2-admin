@@ -1,7 +1,7 @@
 import systemApi from "apis/system";
-import InputSearch from "components/Filter/InputSearch";
-import Button from "components/Form/Button";
-import Table from "components/Form/Table";
+import InputSearch from "components/Filters/InputSearch";
+import Button from "components/Forms/Button";
+import Table from "components/Forms/Table";
 import Layout from "layouts/Layout";
 import Wrapper from "layouts/Wrapper";
 import { useEffect, useState } from "react";
@@ -21,6 +21,10 @@ const MngUserPage = () => {
     setDataSet(mngUserList);
   };
 
+  const handleUserReg = () => {
+    // systemApi.mngUserReg();
+  };
+
   useEffect(() => {
     getMngUserList({ userNm: "" });
   }, []);
@@ -32,6 +36,11 @@ const MngUserPage = () => {
           <InputSearch register={register("userNm")} title="사용자명" />
           <Button type="submit">조회</Button>
         </Wrapper>
+        <div className="flex justify-end mr-5 relative top-8">
+          <Button color="bg-[#7154E1]" onClick={handleUserReg}>
+            등록
+          </Button>
+        </div>
         <Wrapper title="사용자 목록">
           <Table
             header={[
@@ -67,3 +76,15 @@ const MngUserPage = () => {
 };
 
 export default MngUserPage;
+
+// {
+//   "userNm": "test",
+//   "userId": "test",
+//   "userPw": "test",
+//   "userGrpId": "2",
+//   "companyId": "44",
+//   "config": "",
+//   "regId": "admin",
+//   "regDate": "2022-09-27 14:48:16",
+//   "updateDate": "2022-09-27 14:48:16"
+// }
