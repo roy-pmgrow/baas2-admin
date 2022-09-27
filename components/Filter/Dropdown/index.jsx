@@ -1,4 +1,4 @@
-const FilterDropdown = ({ register, title, list }) => {
+const Dropdown = ({ register, title, list }) => {
   return (
     <div className="flex items-center">
       <div className="min-w-[7rem] mr-[1rem]">{title}</div>
@@ -16,4 +16,4 @@ const FilterDropdown = ({ register, title, list }) => {
   );
 };
 
-export default FilterDropdown;
+export default Dropdown;

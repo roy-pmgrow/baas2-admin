@@ -1,8 +1,8 @@
 import systemApi from "apis/system";
-import FilterInput from "components/Filter/FilterInput";
+import InputSearch from "components/Filter/InputSearch";
 import Button from "components/Form/Button";
 import Table from "components/Form/Table";
-import Wrapper from "layout/Wrapper";
+import Wrapper from "layouts/Wrapper";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -27,7 +27,7 @@ const MngUserPage = () => {
   return (
     <form onSubmit={handleSubmit(onValid)}>
       <Wrapper title="사용자 관리">
-        <FilterInput register={register("userNm")} title="사용자명" />
+        <InputSearch register={register("userNm")} title="사용자명" />
         <Button type="submit">조회</Button>
       </Wrapper>
       <Wrapper title="사용자 목록">

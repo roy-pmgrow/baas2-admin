@@ -1,4 +1,4 @@
-const FilterInput = ({ register, title }) => {
+const InputSearch = ({ register, title }) => {
   return (
     <div className="flex items-center">
       <div className="min-w-[5rem] mr-[1rem]">{title}</div>
@@ -10,4 +10,4 @@ const FilterInput = ({ register, title }) => {
   );
 };
 
-export default FilterInput;
+export default InputSearch;

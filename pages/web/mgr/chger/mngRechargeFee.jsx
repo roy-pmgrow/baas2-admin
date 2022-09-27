@@ -1,9 +1,9 @@
 import chargeApi from "apis/charge";
-import FilterDatePicker from "components/Filter/FilterDatePicker";
-import FilterDropdown from "components/Filter/FilterDropdown";
+import DatePicker from "components/Filter/DatePicker";
+import Dropdown from "components/Filter/Dropdown";
 import Button from "components/Form/Button";
 import Table from "components/Form/Table";
-import Wrapper from "layout/Wrapper";
+import Wrapper from "layouts/Wrapper";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -28,7 +28,7 @@ const MngRechargeFeePage = () => {
   return (
     <form onSubmit={handleSubmit(onValid)}>
       <Wrapper title="충전단가 관리">
-        <FilterDropdown
+        <Dropdown
           register={register("hlVoltageDivCd")}
           title="고저전압구분"
           list={[
@@ -37,7 +37,7 @@ const MngRechargeFeePage = () => {
             { id: "2", title: "저압" },
           ]}
         />
-        <FilterDropdown
+        <Dropdown
           register={register("choiceDivCd")}
           title="전압선택구분"
           list={[
@@ -49,7 +49,7 @@ const MngRechargeFeePage = () => {
             { id: "5", title: "자가소비용" },
           ]}
         />
-        <FilterDropdown
+        <Dropdown
           register={register("timeslotDivCd")}
           title="시간대구분"
           list={[
@@ -60,7 +60,7 @@ const MngRechargeFeePage = () => {
             { id: "4", title: "전체시간" },
           ]}
         />
-        <FilterDatePicker register={register("aplcYmd")} title="조회일자" />
+        <DatePicker register={register("aplcYmd")} title="조회일자" />
         <Button type="submit">조회</Button>
       </Wrapper>
       <Wrapper title="분기별 세부항목   [적용일자 : 2022-04-01]">
