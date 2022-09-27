@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 const FilterDatePicker = ({ register, title }) => {
   return (
     <div className="flex items-center">
-      <div className="w-[7rem] mr-[1rem]">{title}</div>
+      <div className="min-w-[5rem] mr-[1rem]">{title}</div>
       <input
         {...register}
         type="date"
