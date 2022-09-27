@@ -5,7 +5,10 @@ const carApi = {
     return httpRequest.post("/web/mgr/MngCarBalance/mngCarDriveHistList.do", data);
   },
   mngCarDriveHistCodeList() {
-    return httpRequest.post("/web/mgr/MngCarBalance/mngCarDriveHistCodeList.do");
+    return httpRequest.post("/web/mgr/MngCarBalance/mngCarDriveHistCodeList.do", {});
+  },
+  mngCarList(companyId) {
+    return httpRequest.post("/web/mgr/MngCarBalance/mngCarList.do", { companyId });
   },
 };
 
