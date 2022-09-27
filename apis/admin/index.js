@@ -8,6 +8,9 @@ const adminApi = {
 
     return httpRequest.form("/web/home/rest/loginProc", formdata);
   },
+  getMenuList(userId) {
+    return httpRequest.post("/web/mgr/sys/rest/getMenuList", { userId });
+  },
 };
 
 export default adminApi;
