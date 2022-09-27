@@ -26,8 +26,6 @@ const LoginPage = () => {
     alert(message);
   };
 
-  const handleClick = () => alert("Test");
-
   return (
     <form
       className="w-screen h-screen bg-[#3e4b5b] flex items-center justify-center"

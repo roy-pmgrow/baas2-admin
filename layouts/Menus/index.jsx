@@ -19,7 +19,6 @@ const Menus = () => {
       }
       return menu;
     });
-    console.log(menuList);
     setMenus(menuList);
   };
 

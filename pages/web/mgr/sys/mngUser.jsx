@@ -1,18 +1,20 @@
 import systemApi from "apis/system";
-import InputSearch from "components/Filters/InputSearch";
+import Input from "components/Filters/Input";
 import Button from "components/Forms/Button";
 import Table from "components/Forms/Table";
+import Modal from "components/Modal";
+import UseReg from "components/Modal/Forms/UserReg";
 import Layout from "layouts/Layout";
 import Wrapper from "layouts/Wrapper";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const MngUserPage = () => {
+  const [modal, setModal] = useState(false);
   const [dataSet, setDataSet] = useState([]);
   const { register, handleSubmit } = useForm({ mode: "onChange" });
 
   const onValid = (data) => {
-    console.log(data);
     getMngUserList(data);
   };
 
@@ -21,23 +23,23 @@ const MngUserPage = () => {
     setDataSet(mngUserList);
   };
 
-  const handleUserReg = () => {
-    // systemApi.mngUserReg();
+  const handleUserRegModal = () => {
+    setModal(true);
   };
 
   useEffect(() => {
-    getMngUserList({ userNm: "" });
+    getMngUserList();
   }, []);
 
   return (
     <Layout>
       <form onSubmit={handleSubmit(onValid)}>
         <Wrapper title="사용자 관리">
-          <InputSearch register={register("userNm")} title="사용자명" />
+          <Input register={register("userNm")} title="사용자명" />
           <Button type="submit">조회</Button>
         </Wrapper>
         <div className="flex justify-end mr-5 relative top-8">
-          <Button color="bg-[#7154E1]" onClick={handleUserReg}>
+          <Button color="bg-[#7154E1]" onClick={handleUserRegModal}>
             등록
           </Button>
         </div>
@@ -71,20 +73,13 @@ const MngUserPage = () => {
           </Table>
         </Wrapper>
       </form>
+      {modal && (
+        <Modal>
+          <UseReg setModal={setModal} setDataSet={setDataSet} />
+        </Modal>
+      )}
     </Layout>
   );
 };
 
 export default MngUserPage;
-
-// {
-//   "userNm": "test",
-//   "userId": "test",
-//   "userPw": "test",
-//   "userGrpId": "2",
-//   "companyId": "44",
-//   "config": "",
-//   "regId": "admin",
-//   "regDate": "2022-09-27 14:48:16",
-//   "updateDate": "2022-09-27 14:48:16"
-// }

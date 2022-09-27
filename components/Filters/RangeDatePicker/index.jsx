@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-const DatePickerRange = ({ registers, setValue, title }) => {
+const RangeDatePicker = ({ registers, setValue, title }) => {
   const handleOneWeek = () => setValue(registers[0].name, dayjs().subtract(1, "week").format("YYYY-MM-DD"));
   const handleOneMonth = () => setValue(registers[0].name, dayjs().subtract(1, "month").format("YYYY-MM-DD"));
   const hnadleThreeMonth = () =>
@@ -12,6 +12,7 @@ const DatePickerRange = ({ registers, setValue, title }) => {
         <div className="min-w-[5rem] mr-[1rem]">{title}</div>
         <input
           {...registers[0]}
+          z
           type="date"
           className="bg-[#f3f5fb] border bodrer-[#dbdbdb] rounded-[0.25rem] w-full leading-[2.5rem] p-[0_0.625rem] outline-none"
           defaultValue={dayjs().format("YYYY-MM-DD")}
@@ -50,4 +51,4 @@ const DatePickerRange = ({ registers, setValue, title }) => {
   );
 };
 
-export default DatePickerRange;
+export default RangeDatePicker;

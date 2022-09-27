@@ -1,22 +1,14 @@
 import carApi from "apis/car";
-import DatePickerRange from "components/Filter/DatePickerRange";
-import Dropdown from "components/Filter/Dropdown";
-import Button from "components/Form/Button";
-import Table from "components/Form/Table";
-import dayjs from "dayjs";
+import Dropdown from "components/Filters/Dropdown";
+import RangeDatePicker from "components/Filters/RangeDatePicker";
+import Button from "components/Forms/Button";
+import Table from "components/Forms/Table";
 import Layout from "layouts/Layout";
 import Wrapper from "layouts/Wrapper";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const MngCarDriveHistListForm = () => {
-  const initParams = {
-    companyId: "",
-    carDivCd: "",
-    carNo: "",
-    dateS: dayjs().format("YYYY-MM-DD"),
-    dateE: dayjs().format("YYYY-MM-DD"),
-  };
   const [dataSet, setDataSet] = useState([]);
   const { register, watch, setValue, handleSubmit } = useForm({ mode: "onChange" });
 
@@ -29,7 +21,6 @@ const MngCarDriveHistListForm = () => {
 
   const getMngCarDriveHistList = async (data) => {
     const { list } = await carApi.mngCarDriveHistList(data);
-    console.log(list);
     setDataSet(list);
   };
 
@@ -79,7 +70,7 @@ const MngCarDriveHistListForm = () => {
 
   useEffect(() => {
     getMngCarDriveHistCodeList();
-    getMngCarDriveHistList(initParams);
+    getMngCarDriveHistList();
   }, []);
 
   return (
@@ -104,7 +95,7 @@ const MngCarDriveHistListForm = () => {
               <Dropdown register={register("carNo")} title="차량번호" list={carNos} />
             </div>
             <div className="flex space-x-[2rem]">
-              <DatePickerRange
+              <RangeDatePicker
                 registers={[register("dateS"), register("dateE")]}
                 setValue={setValue}
                 title="조회일자"

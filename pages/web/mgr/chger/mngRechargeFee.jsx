@@ -1,21 +1,14 @@
 import chargeApi from "apis/charge";
-import DatePicker from "components/Filter/DatePicker";
-import Dropdown from "components/Filter/Dropdown";
-import Button from "components/Form/Button";
-import Table from "components/Form/Table";
-import dayjs from "dayjs";
+import DatePicker from "components/Filters/DatePicker";
+import Dropdown from "components/Filters/Dropdown";
+import Button from "components/Forms/Button";
+import Table from "components/Forms/Table";
 import Layout from "layouts/Layout";
 import Wrapper from "layouts/Wrapper";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const MngRechargeFeePage = () => {
-  const initParams = {
-    aplcYmd: dayjs().format("YYYY-MM-DD"),
-    hlVoltageDivCd: "",
-    choiceDivCd: "",
-    timeslotDivCd: "",
-  };
   const [dataSet, setDataSet] = useState([]);
   const { register, handleSubmit } = useForm({ mode: "onChange" });
 
@@ -29,7 +22,7 @@ const MngRechargeFeePage = () => {
   };
 
   useEffect(() => {
-    getMngRechargeFeeList(initParams);
+    getMngRechargeFeeList();
   }, []);
 
   return (
