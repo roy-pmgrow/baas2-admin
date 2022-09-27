@@ -3,26 +3,36 @@ import DatePickerRange from "components/Filter/DatePickerRange";
 import Dropdown from "components/Filter/Dropdown";
 import Button from "components/Form/Button";
 import Table from "components/Form/Table";
+import dayjs from "dayjs";
+import Layout from "layouts/Layout";
 import Wrapper from "layouts/Wrapper";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const MngCarDriveHistListForm = () => {
-  const initData = { aplcYmd: "2022-09-26", hlVoltageDivCd: "", choiceDivCd: "", timeslotDivCd: "" };
+  const initParams = {
+    companyId: "",
+    carDivCd: "",
+    carNo: "",
+    dateS: dayjs().format("YYYY-MM-DD"),
+    dateE: dayjs().format("YYYY-MM-DD"),
+  };
   const [dataSet, setDataSet] = useState([]);
-  const { register, watch, handleSubmit } = useForm({ mode: "onChange" });
+  const { register, watch, setValue, handleSubmit } = useForm({ mode: "onChange" });
 
   const [companies, setCompanies] = useState([]);
   const [carNos, setCarNos] = useState([]);
 
   const onValid = (data) => {
-    console.log(data);
+    getMngCarDriveHistList(data);
   };
 
-  // const getMngRechargeFeeList = async (data) => {
-  //   const { mngRechargeFeeList } = await chargeApi.mngRechargeFeeList(data);
-  //   setDataSet(mngRechargeFeeList);
-  // };
+  const getMngCarDriveHistList = async (data) => {
+    const { list } = await carApi.mngCarDriveHistList(data);
+    console.log(list);
+    setDataSet(list);
+  };
+
   const deduplicateCompanies = (list) => {
     const deduplicateCompanies = new Set(list.map(({ name }) => name));
     const filterCompanies = [...deduplicateCompanies].map((name) => {
@@ -59,6 +69,7 @@ const MngCarDriveHistListForm = () => {
     const { list } = await carApi.mngCarList(companyId);
     deduplicateCarNos(list);
   };
+
   useEffect(() => {
     if (companies.length !== 0) {
       const companyId = watch("companyId");
@@ -68,58 +79,76 @@ const MngCarDriveHistListForm = () => {
 
   useEffect(() => {
     getMngCarDriveHistCodeList();
+    getMngCarDriveHistList(initParams);
   }, []);
 
   return (
-    <form onSubmit={handleSubmit(onValid)}>
-      <Wrapper title="차량운행이력">
-        <Dropdown register={register("companyId")} title="업체명" list={companies} />
-        <Dropdown
-          register={register("carDivCd")}
-          title="차량구분"
-          list={[
-            { id: "", title: "전체" },
-            { id: "1", title: "버스" },
-            { id: "2", title: "택시" },
-            { id: "3", title: "화물" },
-            { id: "4", title: "승용" },
-            { id: "5", title: "기타" },
-          ]}
-        />
-        <Dropdown register={register("carNo")} title="차량번호" list={carNos} />
-        <DatePickerRange registers={[register("dataS"), register("dataE")]} title="조회일자" />
-        <Button type="submit">조회</Button>
-      </Wrapper>
-      <Wrapper title="운행이력">
-        <Table header={["NO", "전압구분", "선택구분", "기본요금", "시간대", "여름철", "봄가을철", "겨울철"]}>
-          {dataSet.map(
-            (
-              {
-                hiVoltageDivNm,
-                choiceDivNm,
-                basicFee,
-                timeslotDivNm,
-                energyCharge1,
-                energyCharge2,
-                energyCharge3,
-              },
-              index,
-            ) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{hiVoltageDivNm}</td>
-                <td>{choiceDivNm}</td>
-                <td>{basicFee}</td>
-                <td>{timeslotDivNm}</td>
-                <td>{energyCharge1}</td>
-                <td>{energyCharge2}</td>
-                <td>{energyCharge3}</td>
-              </tr>
-            ),
-          )}
-        </Table>
-      </Wrapper>
-    </form>
+    <Layout>
+      <form onSubmit={handleSubmit(onValid)}>
+        <Wrapper title="차량운행이력">
+          <div className="space-y-[1rem]">
+            <div className="inline-flex space-x-[2rem]">
+              <Dropdown register={register("companyId")} title="업체명" list={companies} />
+              <Dropdown
+                register={register("carDivCd")}
+                title="차량구분"
+                list={[
+                  { id: "", title: "전체" },
+                  { id: "1", title: "버스" },
+                  { id: "2", title: "택시" },
+                  { id: "3", title: "화물" },
+                  { id: "4", title: "승용" },
+                  { id: "5", title: "기타" },
+                ]}
+              />
+              <Dropdown register={register("carNo")} title="차량번호" list={carNos} />
+            </div>
+            <div className="flex space-x-[2rem]">
+              <DatePickerRange
+                registers={[register("dateS"), register("dateE")]}
+                setValue={setValue}
+                title="조회일자"
+              />
+              <Button type="submit">조회</Button>
+            </div>
+          </div>
+        </Wrapper>
+        <Wrapper title="운행이력">
+          <Table
+            header={[
+              "NO",
+              "운행일시",
+              "업체명",
+              "차량번호",
+              "주행거리",
+              "누적충전량",
+              "누적방전량",
+              "위치정보",
+            ]}
+          >
+            {dataSet.map(
+              (
+                { drive_time, name, vehiclenumber, trip, accum_chg_amount, accum_dischg_amount, lat, lng },
+                index,
+              ) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{drive_time}</td>
+                  <td>{name}</td>
+                  <td>{vehiclenumber}</td>
+                  <td>{parseFloat((trip / 1000).toFixed(1))}km</td>
+                  <td>{accum_chg_amount}</td>
+                  <td>{accum_dischg_amount}</td>
+                  <td>
+                    {lat}, {lng}
+                  </td>
+                </tr>
+              ),
+            )}
+          </Table>
+        </Wrapper>
+      </form>
+    </Layout>
   );
 };
 
